@@ -4,7 +4,7 @@
     
 }
 
-#headingSection {
+body {
     width: 100%;
     display: flex;
     align-items: center;
@@ -13,30 +13,46 @@
     top: 10%;
 }
 
-#headingSection h1{
+body h1{
     font-family: sans-serif;
     color: #3f532e;
     font-size: 50pt;
 }
 
-#headingSection h2 {
+body h2 {
     margin-top: 0;
     font-family: sans-serif;
     color: #3f532e;
     font-size: 30pt;
 }
 
+#scoreSection {
+    border: 2px solid black;
+    width: 65%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+#stopWatch {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid black;
+    text-align: center;
+    font-family: sans-serif;
+    line-height: 2.1;
+    font-size: 70px;
+}
 #textSection {
     display: flex;
-    width: 75%;
+    width: 65%;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);   
+    
     font-size: 30pt;
     background-color: #a7b59c;
     border-radius: 10px;
@@ -70,7 +86,7 @@
 }
 
 #cursor {
-    width: 2px;
+    width: 1.5px;
     height: 40px;
     background-color: black;
 }

@@ -4,6 +4,7 @@ const unseenChars = document.getElementById("new")
 const seenChars = document.getElementById("seen")
 const cursor = document.getElementById("cursor")
 const trailingSpace = document.getElementById("trailingSpace")
+const stopWatch = document.getElementById("stopWatch")
 
 trailingSpace.style.width = '0px'
 
@@ -14,27 +15,48 @@ let currentWord = ''
 let currentWordSave = currentWord
 let goodAttempt = true
 let futureWords = ""
+let gameStart = false
+let globalTime = 60
+
+
 for (i = 0; i < 60; i++) {
     futureWords +=  allLegalWords[Math.floor(Math.random() * allLegalWords.length)] + " "
 }
 
 let wordList = futureWords.split(' ')
-
-
-
-
 unseenChars.innerHTML = futureWords
-// Delay function
-function Delay(duration) {
-    return new Promise(resolve => {
-        setTimeout(resolve, duration)
-    })
+
+blinkIntervalID = setInterval(blinkCursor, 500)
+
+// Stopwacth function
+function decrementStopwatch() {
+    globalTime--
+    stopWatch.innerHTML = globalTime
+}
+
+// Blink cursor function 
+function blinkCursor() {
+
+    if (cursor.style.backgroundColor == 'transparent') {
+        cursor.style.backgroundColor = 'black'
+    }
+    else {
+        cursor.style.backgroundColor = 'transparent'
+    }
 }
 
 //When a key is pressed...
 //_________________________________________________________________________________________//
 
 document.addEventListener('keydown', (event) => {
+    if (gameStart == false) {
+        setInterval(decrementStopwatch,1000)
+        gameStart = true
+    }
+    cursor.style.backgroundColor = 'black'
+    clearInterval(blinkIntervalID)
+    blinkIntervalID = setInterval(blinkCursor, 500)
+
 
 
     // If the key is backspace
