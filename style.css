@@ -17,6 +17,9 @@ body h1{
     font-family: sans-serif;
     color: #3f532e;
     font-size: 50pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+
 }
 
 body h2 {
@@ -24,6 +27,9 @@ body h2 {
     font-family: sans-serif;
     color: #3f532e;
     font-size: 30pt;
+    font-weight: bold;
+    margin-bottom:100px;
+
 }
 
 #scoreSection {
@@ -31,8 +37,8 @@ body h2 {
     width: 65%;
     height: 200px;
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-around;
 
 }
 #stopWatch {
@@ -45,6 +51,40 @@ body h2 {
     line-height: 2.1;
     font-size: 70px;
 }
+
+#counters {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.score {
+    width: 100px;
+    height:100px;
+    border: 2px solid black;
+    border-radius: 30px;
+
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 40px;
+    line-height: 2.5;
+    font-weight: bold;
+}
+
+#counters p {
+    text-align: center;
+    color: #676666;
+    font-family: sans-serif;
+}
+
+
+
+
+
+
+
+
 #textSection {
     display: flex;
     width: 65%;
@@ -52,15 +92,13 @@ body h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    font-family: serif;
     font-size: 30pt;
     background-color: #a7b59c;
     border-radius: 10px;
     box-shadow: 5px 5px 10px grey;
     white-space: pre;
     overflow: hidden;
- 
-
 }
 #seen {
     visibility: visible;
@@ -69,12 +107,21 @@ body h2 {
     background-color: transparent;
     direction: rtl;
     line-height: 2.5;
+    color: darkslategray;
+
 }
 
-#seen span {
+#seen span.disable{
+    background-color: transparent;
+    color: #676666;
+}
+#seen span.cross{
     text-decoration: line-through;
     background-color: transparent;
 }
+
+
+
 #new {
     display: flex;
     align-items: center;
