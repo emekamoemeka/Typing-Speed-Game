@@ -38,11 +38,10 @@
     left: 50%;
     transform: translate(-50%, -50%);   
     font-size: 30pt;
-
     background-color: #a7b59c;
     border-radius: 10px;
     box-shadow: 5px 5px 10px grey;
-    white-space: nowrap;
+    white-space: pre;
     overflow: hidden;
  
 
@@ -56,7 +55,6 @@
     height: 100%;
     background-color: transparent;
     direction: rtl;
-    white-space: pre;
 
 }
 #new {
@@ -67,11 +65,16 @@
     width: 50%;
     height: 100%;
     background-color: transparent;
-    white-space: pre;
 }
 
 #cursor {
     width: 2px;
     height: 40px;
     background-color: black;
+}
+
+#trailingSpace {
+    width: 10px;
+    height: 40px;
+    background-color: transparent;
 }
