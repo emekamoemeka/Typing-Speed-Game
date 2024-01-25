@@ -14,6 +14,7 @@ let pastWords = ""
 let wordList = futureWords.split(' ')
 let count = 0
 let currentWord = ''
+let currentWordSave = currentWord
 let correctWord = wordList[0]
 let goodAttempt = true
 unseenChars.innerHTML = futureWords
@@ -30,25 +31,40 @@ function Delay(duration) {
 //_________________________________________________________________________________________//
 
 document.addEventListener('keydown', (event) => {
+
+
     // If the key is backspace
-    console.log(currentWord.length)
     if (event.key == 'Backspace' && currentWord.length > 0) {
         // if good attempt
         if (currentWord == wordList[count].slice(0, currentWord.length) && currentWord.length > 0){
             // put the letter back in the upcoming words
-            futureWords = pastWords.slice(-1) + futureWords
+            futureWords = currentWord.slice(-1) + futureWords
         }
         // Change display
         currentWord = currentWord.slice(0, -1)
-        pastWords = pastWords.slice(0, -1)
+        if (currentWord.length == 0) {
+            trailingSpace.style.width = '10px'
+        }
+        
+
+
     // If the key is space
-    } else if (event.key == ' ') { 
+    } else if (event.key == ' ' && currentWord.length > 0) { 
+        if (currentWord == wordList[count]) {
+            pastWords += currentWord + ' '
+        }
+        else {
+            console.log("reach")
+            pastWords += "<span>" + currentWord + "</span> "
+        }
+        
         // Move onto the next word
             count += 1
-            pastWords += currentWord + ' '
             currentWord = ''
             futureWords = wordList.slice(count).join(' ')
             trailingSpace.style.width = '10px'
+        
+        seenChars.innerHTML = pastWords + currentWord
 
     // If the key is a letter
     } else if ((/[a-zA-Z]/).test(event.key) && event.key.length == 1){
@@ -61,13 +77,16 @@ document.addEventListener('keydown', (event) => {
             // Clear the letter from the upcoming words
             futureWords = futureWords.slice(1)
         }
-
-        //cross out section
-        if (currentWord != wordList[count].slice(0, currentWord.length)){
-            seenChars.style.textdecoration = 'line-through'
-        }
     }
     // update all the words
     unseenChars.innerHTML = futureWords
-    seenChars.innerHTML = pastWords + currentWord
+
+
+    // If the guess isnt good then cross it out, otherwise dont
+    if (currentWord == wordList[count].slice(0, currentWord.length)) {
+        seenChars.innerHTML = pastWords + currentWord
+    } else {
+        seenChars.innerHTML = pastWords + "<span>" + currentWord + "</span>"
+    }
+    
 });

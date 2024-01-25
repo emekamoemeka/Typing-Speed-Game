@@ -47,15 +47,17 @@
 
 }
 #seen {
-    display: flex;
-    align-items: center;
-
     visibility: visible;
     width: 50%;
     height: 100%;
     background-color: transparent;
     direction: rtl;
+    line-height: 2.5;
+}
 
+#seen span {
+    text-decoration: line-through;
+    background-color: transparent;
 }
 #new {
     display: flex;
